@@ -27,6 +27,24 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        // Custom chatbot brand colors
+        chatbot: {
+          50: "hsl(var(--chatbot-50))",
+          100: "hsl(var(--chatbot-100))",
+          200: "hsl(var(--chatbot-200))",
+          500: "hsl(var(--chatbot-500))",
+          600: "hsl(var(--chatbot-600))",
+          700: "hsl(var(--chatbot-700))",
+          900: "hsl(var(--chatbot-900))",
+        },
+        assistant: {
+          DEFAULT: "hsl(var(--assistant-bg))",
+          foreground: "hsl(var(--assistant-foreground))",
+        },
+        user: {
+          DEFAULT: "hsl(var(--user-bg))",
+          foreground: "hsl(var(--user-foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
