@@ -97,38 +97,58 @@ export default function ChatContainer() {
   };
 
   return (
-    <div className="flex flex-col h-full bg-background">
-      <ScrollArea ref={scrollAreaRef} className="flex-1 p-4">
+    <div className="flex flex-col h-full">
+      <ScrollArea ref={scrollAreaRef} className="flex-1 p-6">
         <div className="max-w-4xl mx-auto">
-          {messages.map((message) => (
-            <ChatMessage
+          {messages.map((message, index) => (
+            <div
               key={message.id}
-              message={message.text}
-              isUser={message.isUser}
-              timestamp={message.timestamp}
-            />
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <ChatMessage
+                message={message.text}
+                isUser={message.isUser}
+                timestamp={message.timestamp}
+              />
+            </div>
           ))}
           {isLoading && (
-            <div className="flex justify-start mb-4">
-              <div className="bg-assistant text-assistant-foreground rounded-2xl rounded-bl-md px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <div className="flex gap-1">
-                    <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                    <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                    <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            <div className="flex justify-start mb-6 animate-fade-in-up">
+              <div className="flex items-start gap-3">
+                {/* AI Avatar */}
+                <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center shadow-lg bg-gradient-to-br from-emerald-500 to-teal-600">
+                  <div className="w-4 h-4 text-white">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1L9 7V9C9 10.1 9.9 11 11 11V14L13 16L15 14V11C16.1 11 17 10.1 17 9V7L21 9Z" />
+                    </svg>
                   </div>
-                  <span className="text-xs opacity-70">Thinking...</span>
+                </div>
+
+                {/* Typing indicator */}
+                <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 dark:border-slate-700/50 rounded-3xl rounded-bl-lg px-5 py-4 shadow-lg">
+                  <div className="flex items-center gap-3">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    </div>
+                    <span className="text-xs text-slate-600 dark:text-slate-300 font-medium">AI is thinking...</span>
+                  </div>
                 </div>
               </div>
             </div>
           )}
+
+          {/* Spacing at bottom */}
+          <div className="h-6" />
         </div>
       </ScrollArea>
-      
-      <ChatInput 
-        onSendMessage={handleSendMessage} 
+
+      <ChatInput
+        onSendMessage={handleSendMessage}
         isLoading={isLoading}
-        placeholder="Ask me anything... I'm here to help!"
+        placeholder="Ask me anything... I'm here to help! 💫"
       />
     </div>
   );
