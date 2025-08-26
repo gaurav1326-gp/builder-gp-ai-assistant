@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 interface Particle {
   id: number;
   x: number;
   y: number;
   size: number;
-  shape: 'circle' | 'square' | 'triangle' | 'star';
+  shape: "circle" | "square" | "triangle" | "star";
   color: string;
   duration: number;
   delay: number;
-  direction: 'up' | 'down' | 'left' | 'right' | 'diagonal';
+  direction: "up" | "down" | "left" | "right" | "diagonal";
 }
 
 export default function FloatingParticles() {
@@ -17,18 +17,29 @@ export default function FloatingParticles() {
 
   useEffect(() => {
     const colors = [
-      'bg-blue-300/30',
-      'bg-purple-300/30', 
-      'bg-pink-300/30',
-      'bg-indigo-300/30',
-      'bg-cyan-300/30',
-      'bg-violet-300/30',
-      'bg-emerald-300/30',
-      'bg-rose-300/30'
+      "bg-blue-300/30",
+      "bg-purple-300/30",
+      "bg-pink-300/30",
+      "bg-indigo-300/30",
+      "bg-cyan-300/30",
+      "bg-violet-300/30",
+      "bg-emerald-300/30",
+      "bg-rose-300/30",
     ];
-    
-    const shapes: Particle['shape'][] = ['circle', 'square', 'triangle', 'star'];
-    const directions: Particle['direction'][] = ['up', 'down', 'left', 'right', 'diagonal'];
+
+    const shapes: Particle["shape"][] = [
+      "circle",
+      "square",
+      "triangle",
+      "star",
+    ];
+    const directions: Particle["direction"][] = [
+      "up",
+      "down",
+      "left",
+      "right",
+      "diagonal",
+    ];
 
     const newParticles: Particle[] = [];
     for (let i = 0; i < 25; i++) {
@@ -50,7 +61,7 @@ export default function FloatingParticles() {
   const getShapeElement = (particle: Particle) => {
     const baseClasses = `absolute ${particle.color} opacity-70`;
     const animationClasses = `animate-float`;
-    
+
     const style = {
       left: `${particle.x}%`,
       top: `${particle.y}%`,
@@ -61,7 +72,7 @@ export default function FloatingParticles() {
     };
 
     switch (particle.shape) {
-      case 'circle':
+      case "circle":
         return (
           <div
             key={particle.id}
@@ -69,8 +80,8 @@ export default function FloatingParticles() {
             style={style}
           />
         );
-      
-      case 'square':
+
+      case "square":
         return (
           <div
             key={particle.id}
@@ -78,20 +89,20 @@ export default function FloatingParticles() {
             style={style}
           />
         );
-      
-      case 'triangle':
+
+      case "triangle":
         return (
           <div
             key={particle.id}
             className={`${baseClasses} ${animationClasses}`}
             style={{
               ...style,
-              clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
+              clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
             }}
           />
         );
-      
-      case 'star':
+
+      case "star":
         return (
           <div
             key={particle.id}
@@ -110,7 +121,7 @@ export default function FloatingParticles() {
             </svg>
           </div>
         );
-      
+
       default:
         return null;
     }
@@ -119,19 +130,46 @@ export default function FloatingParticles() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {particles.map((particle) => getShapeElement(particle))}
-      
+
       {/* Additional sparkle effects */}
-      <div className="absolute top-1/6 left-1/5 w-2 h-2 bg-yellow-300 rounded-full animate-ping opacity-60" style={{ animationDelay: '1s', animationDuration: '3s' }} />
-      <div className="absolute top-1/4 right-1/6 w-1 h-1 bg-blue-400 rounded-full animate-ping opacity-60" style={{ animationDelay: '2s', animationDuration: '4s' }} />
-      <div className="absolute top-1/2 left-1/8 w-2 h-2 bg-purple-400 rounded-full animate-ping opacity-60" style={{ animationDelay: '3s', animationDuration: '2s' }} />
-      <div className="absolute top-2/3 right-1/4 w-1 h-1 bg-emerald-400 rounded-full animate-ping opacity-60" style={{ animationDelay: '4s', animationDuration: '5s' }} />
-      <div className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-pink-400 rounded-full animate-ping opacity-60" style={{ animationDelay: '5s', animationDuration: '3s' }} />
-      <div className="absolute bottom-1/6 right-1/5 w-1 h-1 bg-cyan-400 rounded-full animate-ping opacity-60" style={{ animationDelay: '6s', animationDuration: '4s' }} />
-      
+      <div
+        className="absolute top-1/6 left-1/5 w-2 h-2 bg-yellow-300 rounded-full animate-ping opacity-60"
+        style={{ animationDelay: "1s", animationDuration: "3s" }}
+      />
+      <div
+        className="absolute top-1/4 right-1/6 w-1 h-1 bg-blue-400 rounded-full animate-ping opacity-60"
+        style={{ animationDelay: "2s", animationDuration: "4s" }}
+      />
+      <div
+        className="absolute top-1/2 left-1/8 w-2 h-2 bg-purple-400 rounded-full animate-ping opacity-60"
+        style={{ animationDelay: "3s", animationDuration: "2s" }}
+      />
+      <div
+        className="absolute top-2/3 right-1/4 w-1 h-1 bg-emerald-400 rounded-full animate-ping opacity-60"
+        style={{ animationDelay: "4s", animationDuration: "5s" }}
+      />
+      <div
+        className="absolute bottom-1/4 left-1/3 w-2 h-2 bg-pink-400 rounded-full animate-ping opacity-60"
+        style={{ animationDelay: "5s", animationDuration: "3s" }}
+      />
+      <div
+        className="absolute bottom-1/6 right-1/5 w-1 h-1 bg-cyan-400 rounded-full animate-ping opacity-60"
+        style={{ animationDelay: "6s", animationDuration: "4s" }}
+      />
+
       {/* Light rays */}
-      <div className="absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-blue-300/50 to-transparent animate-pulse" style={{ animationDelay: '2s', animationDuration: '4s' }} />
-      <div className="absolute top-0 right-1/3 w-px h-24 bg-gradient-to-b from-purple-300/50 to-transparent animate-pulse" style={{ animationDelay: '4s', animationDuration: '3s' }} />
-      <div className="absolute bottom-0 left-1/3 w-px h-28 bg-gradient-to-t from-emerald-300/50 to-transparent animate-pulse" style={{ animationDelay: '1s', animationDuration: '5s' }} />
+      <div
+        className="absolute top-0 left-1/4 w-px h-32 bg-gradient-to-b from-blue-300/50 to-transparent animate-pulse"
+        style={{ animationDelay: "2s", animationDuration: "4s" }}
+      />
+      <div
+        className="absolute top-0 right-1/3 w-px h-24 bg-gradient-to-b from-purple-300/50 to-transparent animate-pulse"
+        style={{ animationDelay: "4s", animationDuration: "3s" }}
+      />
+      <div
+        className="absolute bottom-0 left-1/3 w-px h-28 bg-gradient-to-t from-emerald-300/50 to-transparent animate-pulse"
+        style={{ animationDelay: "1s", animationDuration: "5s" }}
+      />
     </div>
   );
 }

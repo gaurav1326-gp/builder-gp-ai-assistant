@@ -14,7 +14,7 @@ interface ChatInputProps {
 export default function ChatInput({
   onSendMessage,
   isLoading = false,
-  placeholder = "Ask me anything..."
+  placeholder = "Ask me anything...",
 }: ChatInputProps) {
   const [message, setMessage] = useState("");
   const [isFocused, setIsFocused] = useState(false);
@@ -46,11 +46,15 @@ export default function ChatInput({
   return (
     <div className="p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-white/20 dark:border-slate-700/50">
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-        <div className={cn(
-          "flex gap-3 p-2 rounded-2xl transition-all duration-300 shadow-lg",
-          "bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 dark:border-slate-700/50",
-          isFocused ? "shadow-2xl ring-2 ring-blue-500/30" : "hover:shadow-xl"
-        )}>
+        <div
+          className={cn(
+            "flex gap-3 p-2 rounded-2xl transition-all duration-300 shadow-lg",
+            "bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 dark:border-slate-700/50",
+            isFocused
+              ? "shadow-2xl ring-2 ring-blue-500/30"
+              : "hover:shadow-xl",
+          )}
+        >
           <div className="flex-1 relative">
             <Textarea
               value={message}
@@ -62,7 +66,7 @@ export default function ChatInput({
               className={cn(
                 "min-h-[52px] max-h-[120px] resize-none border-0 bg-transparent pr-12",
                 "focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-slate-400 dark:placeholder:text-slate-500",
-                "text-slate-800 dark:text-slate-100"
+                "text-slate-800 dark:text-slate-100",
               )}
               disabled={isLoading}
             />
@@ -87,7 +91,7 @@ export default function ChatInput({
               "bg-gradient-to-br from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700",
               "shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed",
               "transform hover:scale-105 active:scale-95",
-              !message.trim() ? "" : "animate-pulse-glow"
+              !message.trim() ? "" : "animate-pulse-glow",
             )}
           >
             {isLoading ? (
@@ -100,7 +104,8 @@ export default function ChatInput({
 
         <div className="text-center mt-3">
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Press Enter to send • Shift + Enter for new line • Click mic for voice input
+            Press Enter to send • Shift + Enter for new line • Click mic for
+            voice input
           </p>
         </div>
       </form>

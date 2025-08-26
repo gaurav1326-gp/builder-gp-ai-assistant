@@ -24,8 +24,8 @@ const questionCategories: QuestionCategory[] = [
       "What can you help me with?",
       "Tell me about yourself",
       "How do I get started?",
-      "What are your capabilities?"
-    ]
+      "What are your capabilities?",
+    ],
   },
   {
     title: "Study Help",
@@ -36,8 +36,8 @@ const questionCategories: QuestionCategory[] = [
       "How do I solve quadratic equations?",
       "What is the water cycle?",
       "Help me understand gravity",
-      "Explain the solar system to me"
-    ]
+      "Explain the solar system to me",
+    ],
   },
   {
     title: "Health Guidance",
@@ -48,8 +48,8 @@ const questionCategories: QuestionCategory[] = [
       "How much water should I drink daily?",
       "What's good sleep hygiene?",
       "How to manage stress effectively?",
-      "Benefits of regular exercise?"
-    ]
+      "Benefits of regular exercise?",
+    ],
   },
   {
     title: "Quick Questions",
@@ -60,12 +60,15 @@ const questionCategories: QuestionCategory[] = [
       "Give me a motivational quote",
       "Tell me a fun fact",
       "Help me plan my day",
-      "What should I learn today?"
-    ]
-  }
+      "What should I learn today?",
+    ],
+  },
 ];
 
-export default function QuestionSuggestions({ onQuestionSelect, isVisible }: QuestionSuggestionsProps) {
+export default function QuestionSuggestions({
+  onQuestionSelect,
+  isVisible,
+}: QuestionSuggestionsProps) {
   if (!isVisible) return null;
 
   return (
@@ -92,7 +95,7 @@ export default function QuestionSuggestions({ onQuestionSelect, isVisible }: Que
                   {category.title}
                 </h4>
               </div>
-              
+
               <div className="space-y-2">
                 {category.questions.map((question, index) => (
                   <Button
@@ -105,7 +108,10 @@ export default function QuestionSuggestions({ onQuestionSelect, isVisible }: Que
                       "border border-white/20 dark:border-slate-700/50",
                       "hover:shadow-md hover:scale-[1.02] transition-all duration-200",
                       "text-slate-700 dark:text-slate-200",
-                      category.color.split(' ').filter(c => c.startsWith('hover:')).join(' ')
+                      category.color
+                        .split(" ")
+                        .filter((c) => c.startsWith("hover:"))
+                        .join(" "),
                     )}
                   >
                     <span className="text-sm leading-relaxed">{question}</span>

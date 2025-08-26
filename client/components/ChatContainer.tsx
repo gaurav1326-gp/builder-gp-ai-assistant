@@ -20,18 +20,25 @@ export default function ChatContainer() {
       id: "welcome",
       text: "Hello! I'm your AI assistant created by Gaurav. I'm here to help you with general questions, support your studies with clear explanations, and offer basic health guidance. How can I help you today?",
       isUser: false,
-      timestamp: new Date()
-    }
+      timestamp: new Date(),
+    },
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [voiceEnabled, setVoiceEnabled] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
-  const { speak, stop, isSpeaking, isSupported: ttsSupported } = useTextToSpeech();
+  const {
+    speak,
+    stop,
+    isSpeaking,
+    isSupported: ttsSupported,
+  } = useTextToSpeech();
 
   // Auto-scroll to bottom when new messages are added
   useEffect(() => {
     if (scrollAreaRef.current) {
-      const scrollContainer = scrollAreaRef.current.querySelector('[data-radix-scroll-area-viewport]');
+      const scrollContainer = scrollAreaRef.current.querySelector(
+        "[data-radix-scroll-area-viewport]",
+      );
       if (scrollContainer) {
         scrollContainer.scrollTop = scrollContainer.scrollHeight;
       }
@@ -40,27 +47,41 @@ export default function ChatContainer() {
 
   const simulateAIResponse = async (userMessage: string): Promise<string> => {
     // Simulate AI thinking time
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
-    
+    await new Promise((resolve) =>
+      setTimeout(resolve, 1000 + Math.random() * 2000),
+    );
+
     // Simple response simulation based on keywords
     const lowerMessage = userMessage.toLowerCase();
-    
-    if (lowerMessage.includes('study') || lowerMessage.includes('learn') || lowerMessage.includes('explain')) {
+
+    if (
+      lowerMessage.includes("study") ||
+      lowerMessage.includes("learn") ||
+      lowerMessage.includes("explain")
+    ) {
       return "I'd be happy to help with your studies! To give you the best explanation, could you tell me more specifically what topic or concept you'd like me to explain? I can break it down step-by-step and provide examples to make it easier to understand.";
     }
-    
-    if (lowerMessage.includes('health') || lowerMessage.includes('medical') || lowerMessage.includes('sick')) {
+
+    if (
+      lowerMessage.includes("health") ||
+      lowerMessage.includes("medical") ||
+      lowerMessage.includes("sick")
+    ) {
       return "I can provide general health guidance, but please remember that I'm not a substitute for professional medical advice. For any serious health concerns, it's always best to consult with a healthcare professional. What general health topic would you like to know about?";
     }
-    
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+
+    if (
+      lowerMessage.includes("hello") ||
+      lowerMessage.includes("hi") ||
+      lowerMessage.includes("hey")
+    ) {
       return "Hello! It's great to meet you. I'm here to support you with questions, studies, and general guidance. What would you like to talk about today?";
     }
-    
-    if (lowerMessage.includes('help') || lowerMessage.includes('support')) {
+
+    if (lowerMessage.includes("help") || lowerMessage.includes("support")) {
       return "I'm here to help! I can assist you with:\n\n• General questions and information\n• Study support with clear explanations\n• Basic health guidance\n• Step-by-step breakdowns of complex topics\n\nWhat would you like help with specifically?";
     }
-    
+
     // Default friendly response
     return "That's an interesting question! I'm here to help you learn and understand. Could you tell me a bit more about what you'd like to know? I'm happy to explain things step-by-step and provide examples to make concepts clearer.";
   };
@@ -71,24 +92,24 @@ export default function ChatContainer() {
       id: Date.now().toString(),
       text: messageText,
       isUser: true,
-      timestamp: new Date()
+      timestamp: new Date(),
     };
-    
-    setMessages(prev => [...prev, userMessage]);
+
+    setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
     try {
       // Simulate AI response
       const aiResponse = await simulateAIResponse(messageText);
-      
+
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: aiResponse,
         isUser: false,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
-      
-      setMessages(prev => [...prev, aiMessage]);
+
+      setMessages((prev) => [...prev, aiMessage]);
 
       // Speak AI response if voice is enabled
       if (voiceEnabled && ttsSupported) {
@@ -99,9 +120,9 @@ export default function ChatContainer() {
         id: (Date.now() + 1).toString(),
         text: "I apologize, but I'm having trouble responding right now. Please try again in a moment.",
         isUser: false,
-        timestamp: new Date()
+        timestamp: new Date(),
       };
-      setMessages(prev => [...prev, errorMessage]);
+      setMessages((prev) => [...prev, errorMessage]);
     } finally {
       setIsLoading(false);
     }
@@ -125,10 +146,16 @@ export default function ChatContainer() {
             size="sm"
             className={cn(
               "transition-all duration-300",
-              voiceEnabled ? "bg-primary/10 border-primary/30 text-primary" : "",
-              isSpeaking && "animate-pulse"
+              voiceEnabled
+                ? "bg-primary/10 border-primary/30 text-primary"
+                : "",
+              isSpeaking && "animate-pulse",
             )}
-            title={voiceEnabled ? "Disable voice responses" : "Enable voice responses"}
+            title={
+              voiceEnabled
+                ? "Disable voice responses"
+                : "Enable voice responses"
+            }
           >
             {voiceEnabled ? (
               <Volume2 className="h-4 w-4" />
@@ -173,11 +200,22 @@ export default function ChatContainer() {
                 <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border border-white/20 dark:border-slate-700/50 rounded-3xl rounded-bl-lg px-5 py-4 shadow-lg">
                   <div className="flex items-center gap-3">
                     <div className="flex gap-1">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                      <div
+                        className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce"
+                        style={{ animationDelay: "0ms" }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce"
+                        style={{ animationDelay: "150ms" }}
+                      ></div>
+                      <div
+                        className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce"
+                        style={{ animationDelay: "300ms" }}
+                      ></div>
                     </div>
-                    <span className="text-xs text-slate-600 dark:text-slate-300 font-medium">AI is thinking...</span>
+                    <span className="text-xs text-slate-600 dark:text-slate-300 font-medium">
+                      AI is thinking...
+                    </span>
                   </div>
                 </div>
               </div>

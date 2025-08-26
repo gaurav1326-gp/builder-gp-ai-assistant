@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Mic, MicOff, Square } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { useVoiceRecording } from '@/hooks/useVoiceRecording';
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Mic, MicOff, Square } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useVoiceRecording } from "@/hooks/useVoiceRecording";
 
 interface VoiceButtonProps {
   onTranscript: (text: string) => void;
@@ -10,7 +10,11 @@ interface VoiceButtonProps {
   className?: string;
 }
 
-export default function VoiceButton({ onTranscript, disabled = false, className }: VoiceButtonProps) {
+export default function VoiceButton({
+  onTranscript,
+  disabled = false,
+  className,
+}: VoiceButtonProps) {
   const {
     isRecording,
     transcript,
@@ -71,7 +75,7 @@ export default function VoiceButton({ onTranscript, disabled = false, className 
         className={cn(
           "transition-all duration-300 relative overflow-hidden",
           isRecording && "animate-pulse",
-          className
+          className,
         )}
         title={isRecording ? "Stop recording" : "Start voice input"}
       >
@@ -81,7 +85,10 @@ export default function VoiceButton({ onTranscript, disabled = false, className 
             {/* Recording animation rings */}
             <div className="absolute inset-0 rounded-md">
               <div className="absolute inset-0 rounded-md bg-red-500/20 animate-ping" />
-              <div className="absolute inset-0 rounded-md bg-red-500/10 animate-ping" style={{ animationDelay: '0.5s' }} />
+              <div
+                className="absolute inset-0 rounded-md bg-red-500/10 animate-ping"
+                style={{ animationDelay: "0.5s" }}
+              />
             </div>
           </>
         ) : (
