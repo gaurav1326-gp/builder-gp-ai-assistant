@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Send, Loader2, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import VoiceButton from "./VoiceButton";
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -33,6 +34,15 @@ export default function ChatInput({
     }
   };
 
+  const handleVoiceTranscript = (transcript: string) => {
+    setMessage(transcript);
+    // Auto-submit voice messages
+    if (transcript.trim() && !isLoading) {
+      onSendMessage(transcript.trim());
+      setMessage("");
+    }
+  };
+
   return (
     <div className="p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-t border-white/20 dark:border-slate-700/50">
       <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
@@ -50,7 +60,7 @@ export default function ChatInput({
               onBlur={() => setIsFocused(false)}
               placeholder={placeholder}
               className={cn(
-                "min-h-[52px] max-h-[120px] resize-none border-0 bg-transparent",
+                "min-h-[52px] max-h-[120px] resize-none border-0 bg-transparent pr-12",
                 "focus-visible:ring-0 focus-visible:ring-offset-0 placeholder:text-slate-400 dark:placeholder:text-slate-500",
                 "text-slate-800 dark:text-slate-100"
               )}
@@ -62,6 +72,13 @@ export default function ChatInput({
               </div>
             )}
           </div>
+
+          {/* Voice input button */}
+          <VoiceButton
+            onTranscript={handleVoiceTranscript}
+            disabled={isLoading}
+            className="self-end mb-1"
+          />
           <Button
             type="submit"
             disabled={!message.trim() || isLoading}
@@ -83,7 +100,7 @@ export default function ChatInput({
 
         <div className="text-center mt-3">
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            Press Enter to send • Shift + Enter for new line
+            Press Enter to send • Shift + Enter for new line • Click mic for voice input
           </p>
         </div>
       </form>
