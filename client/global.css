@@ -72,33 +72,48 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 230 23% 9%;
+    --foreground: 214 32% 91%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 230 23% 11%;
+    --card-foreground: 214 32% 91%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 230 23% 11%;
+    --popover-foreground: 214 32% 91%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Dark mode chatbot colors */
+    --chatbot-50: 230 23% 16%;
+    --chatbot-100: 230 23% 18%;
+    --chatbot-200: 230 23% 25%;
+    --chatbot-500: 214 84% 56%;
+    --chatbot-600: 214 84% 46%;
+    --chatbot-700: 214 84% 38%;
+    --chatbot-900: 214 84% 20%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Dark mode chat colors */
+    --assistant-bg: 230 23% 16%;
+    --assistant-foreground: 214 32% 91%;
+    --user-bg: 214 84% 56%;
+    --user-foreground: 0 0% 100%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --secondary: 230 23% 16%;
+    --secondary-foreground: 214 32% 91%;
+
+    --muted: 230 23% 16%;
+    --muted-foreground: 214 20% 65%;
+
+    --accent: 230 23% 16%;
+    --accent-foreground: 214 32% 91%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 230 23% 18%;
+    --input: 230 23% 16%;
+    --ring: 214 84% 56%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
