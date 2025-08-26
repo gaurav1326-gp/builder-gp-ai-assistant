@@ -2,6 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Button } from "@/components/ui/button";
+import { Volume2, VolumeX } from "lucide-react";
+import { useTextToSpeech } from "@/hooks/useTextToSpeech";
+import { cn } from "@/lib/utils";
 
 interface Message {
   id: string;
@@ -20,7 +24,9 @@ export default function ChatContainer() {
     }
   ]);
   const [isLoading, setIsLoading] = useState(false);
+  const [voiceEnabled, setVoiceEnabled] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const { speak, stop, isSpeaking, isSupported: ttsSupported } = useTextToSpeech();
 
   // Auto-scroll to bottom when new messages are added
   useEffect(() => {
@@ -83,6 +89,11 @@ export default function ChatContainer() {
       };
       
       setMessages(prev => [...prev, aiMessage]);
+
+      // Speak AI response if voice is enabled
+      if (voiceEnabled && ttsSupported) {
+        speak(aiResponse);
+      }
     } catch (error) {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -96,9 +107,42 @@ export default function ChatContainer() {
     }
   };
 
+  const toggleVoice = () => {
+    if (voiceEnabled) {
+      stop(); // Stop any current speech
+    }
+    setVoiceEnabled(!voiceEnabled);
+  };
+
   return (
     <div className="flex flex-col h-full">
-      <ScrollArea ref={scrollAreaRef} className="flex-1 p-6">
+      {/* Voice controls */}
+      {ttsSupported && (
+        <div className="flex justify-end p-4 pb-0">
+          <Button
+            onClick={toggleVoice}
+            variant="outline"
+            size="sm"
+            className={cn(
+              "transition-all duration-300",
+              voiceEnabled ? "bg-primary/10 border-primary/30 text-primary" : "",
+              isSpeaking && "animate-pulse"
+            )}
+            title={voiceEnabled ? "Disable voice responses" : "Enable voice responses"}
+          >
+            {voiceEnabled ? (
+              <Volume2 className="h-4 w-4" />
+            ) : (
+              <VolumeX className="h-4 w-4" />
+            )}
+            <span className="ml-2 text-xs">
+              {voiceEnabled ? "Voice On" : "Voice Off"}
+            </span>
+          </Button>
+        </div>
+      )}
+
+      <ScrollArea ref={scrollAreaRef} className="flex-1 p-6 pt-2">
         <div className="max-w-4xl mx-auto">
           {messages.map((message, index) => (
             <div
