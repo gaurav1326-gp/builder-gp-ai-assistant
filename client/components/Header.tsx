@@ -1,31 +1,44 @@
-import { Bot, Heart, BookOpen, Stethoscope } from "lucide-react";
+import { Bot, Heart, BookOpen, Stethoscope, Sparkles } from "lucide-react";
 
 export default function Header() {
   return (
-    <header className="bg-background border-b border-border">
-      <div className="max-w-4xl mx-auto px-4 py-6">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="flex items-center justify-center w-10 h-10 bg-primary rounded-full">
-            <Bot className="w-6 h-6 text-primary-foreground" />
+    <header className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border-b border-white/20 dark:border-slate-700/50 shadow-lg">
+      <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
+          <div className="relative">
+            <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl shadow-lg animate-pulse-glow">
+              <Bot className="w-8 h-8 text-white animate-float" />
+            </div>
+            <div className="absolute -top-1 -right-1">
+              <Sparkles className="w-5 h-5 text-yellow-400 animate-pulse" />
+            </div>
           </div>
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Gaurav's AI Assistant</h1>
-            <p className="text-muted-foreground">Smart, friendly, and supportive</p>
+          <div className="space-y-1">
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Gaurav's AI Assistant
+            </h1>
+            <p className="text-slate-600 dark:text-slate-300 font-medium">Smart, friendly, and supportive AI companion</p>
           </div>
         </div>
-        
-        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-          <div className="flex items-center gap-2">
-            <Heart className="w-4 h-4 text-primary" />
-            <span>General support</span>
+
+        <div className="flex flex-wrap gap-6 text-sm animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="flex items-center gap-3 bg-white/60 dark:bg-slate-800/60 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div className="p-1 bg-red-100 dark:bg-red-900/30 rounded-full">
+              <Heart className="w-4 h-4 text-red-500" />
+            </div>
+            <span className="font-medium text-slate-700 dark:text-slate-200">General support</span>
           </div>
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-primary" />
-            <span>Study help</span>
+          <div className="flex items-center gap-3 bg-white/60 dark:bg-slate-800/60 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div className="p-1 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+              <BookOpen className="w-4 h-4 text-blue-500" />
+            </div>
+            <span className="font-medium text-slate-700 dark:text-slate-200">Study help</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Stethoscope className="w-4 h-4 text-primary" />
-            <span>Health guidance</span>
+          <div className="flex items-center gap-3 bg-white/60 dark:bg-slate-800/60 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div className="p-1 bg-green-100 dark:bg-green-900/30 rounded-full">
+              <Stethoscope className="w-4 h-4 text-green-500" />
+            </div>
+            <span className="font-medium text-slate-700 dark:text-slate-200">Health guidance</span>
           </div>
         </div>
       </div>
