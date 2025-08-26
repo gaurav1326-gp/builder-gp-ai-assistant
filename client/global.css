@@ -9,33 +9,48 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 250 100% 99%;
+    --foreground: 230 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 230 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 230 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Chatbot brand colors */
+    --chatbot-50: 214 100% 97%;
+    --chatbot-100: 214 95% 93%;
+    --chatbot-200: 213 97% 87%;
+    --chatbot-500: 214 84% 56%;
+    --chatbot-600: 214 84% 46%;
+    --chatbot-700: 215 84% 38%;
+    --chatbot-900: 215 84% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Chat message colors */
+    --assistant-bg: 214 100% 97%;
+    --assistant-foreground: 215 84% 20%;
+    --user-bg: 214 84% 56%;
+    --user-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --secondary: 214 32% 96%;
+    --secondary-foreground: 230 15% 15%;
+
+    --muted: 214 32% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 214 32% 96%;
+    --accent-foreground: 230 15% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 214 32% 88%;
+    --input: 214 32% 96%;
+    --ring: 214 84% 56%;
 
     --radius: 0.5rem;
 
