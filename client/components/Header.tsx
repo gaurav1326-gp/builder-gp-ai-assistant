@@ -1,4 +1,4 @@
-import { Bot, Heart, BookOpen, Stethoscope, Sparkles } from "lucide-react";
+import { Bot, Heart, BookOpen, Stethoscope, Sparkles, Mic, Volume2 } from "lucide-react";
 
 export default function Header() {
   return (
@@ -39,6 +39,18 @@ export default function Header() {
               <Stethoscope className="w-4 h-4 text-green-500" />
             </div>
             <span className="font-medium text-slate-700 dark:text-slate-200">Health guidance</span>
+          </div>
+          <div className="flex items-center gap-3 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div className="p-1 bg-purple-100 dark:bg-purple-900/30 rounded-full">
+              <Mic className="w-4 h-4 text-purple-500" />
+            </div>
+            <span className="font-medium text-slate-700 dark:text-slate-200">Voice input</span>
+          </div>
+          <div className="flex items-center gap-3 bg-gradient-to-r from-emerald-100 to-teal-100 dark:from-emerald-900/30 dark:to-teal-900/30 px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+            <div className="p-1 bg-emerald-100 dark:bg-emerald-900/30 rounded-full">
+              <Volume2 className="w-4 h-4 text-emerald-500" />
+            </div>
+            <span className="font-medium text-slate-700 dark:text-slate-200">Voice responses</span>
           </div>
         </div>
       </div>
